@@ -1,0 +1,18 @@
+# .github/workflows/hello.yml
+on: push # runs when ever there is a push to any branch of the repo
+name: Check suite debug.
+jobs:
+  debug:
+    name: Debug all the contexts
+    runs-on: ubuntu-latest
+    steps:
+    - name: debug checks
+      run: |
+        echo "ENV:"
+        env
+        echo " github context - ${{toJson(github) }}"
+        echo " job context - ${{toJson(job) }}"
+        echo " steps context - ${{toJson(steps) }}"
+        echo " secrets context - ${{toJson(secrets) }}"
+        echo " strategy context - ${{toJson(strategy) }}"
+        echo " matrix context - ${{toJson(matrix) }}"
